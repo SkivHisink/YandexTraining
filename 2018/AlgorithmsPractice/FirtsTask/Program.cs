@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FirtsTask
+﻿namespace FirtsTask
 {
     class Program
     {
         public static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            string input = Console.ReadLine();
+            var splittedInput = input.Split(new []{' '}, StringSplitOptions.RemoveEmptyEntries);
+            int h = Convert.ToInt32(splittedInput[0]); // hours
+            int m = Convert.ToInt32(splittedInput[1]); // minutes
+            Console.Write(((h != 0) ? 12 - h : h) + " "+ ((m != 0) ? 60 - m : m));
         }
     }
 }
