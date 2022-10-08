@@ -1,7 +1,14 @@
-﻿namespace FirtsTask
+﻿
+using System;
+
+namespace FirtsTask
 {
     class Program
     {
+        public Program()
+        {
+
+        }
         public static void Main()
         {
             string input = Console.ReadLine();
