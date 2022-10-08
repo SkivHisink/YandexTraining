@@ -15,7 +15,55 @@ namespace FirtsTask
             return new string(charArray);
         }
 
-        public static void IsPolyndrom(string str, out string resultStr)
+        public static void FindPolyndrom(string str, out string resultStr)
+        {
+            resultStr = "";
+            bool isFound = false;
+            for (int i = 2; i < str.Length+1; i++)
+            {
+                for (int j = 0; j < str.Length-i+1; ++j)
+                {
+                    var tempStr = str.Substring(j, i);
+                    if (tempStr == Reverse(tempStr))
+                    {
+                        isFound = true;
+                        if (resultStr.Length < 2)
+                        {
+                            resultStr = tempStr;
+                        }
+                        else
+                        {
+                            if (resultStr.Length < tempStr.Length)
+                            {
+                                break;
+                            }
+
+                            for (int k = 0; k < tempStr.Length; k++)
+                            {
+                                if (resultStr[k] > tempStr[k])
+                                {
+                                    resultStr = tempStr;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (isFound)
+                {
+                    break;
+                }
+            }
+        }
+
+        public static void Main()
+        {
+            string input = Console.ReadLine();
+            FindPolyndrom(input, out string result);
+            Console.Write((result.Length > 1) ? result : -1);
+        }
+
+        public static void FindPolyndromLegacy(string str, out string resultStr)
         {
             resultStr = "";
             int minPolySize = Int32.MaxValue;
@@ -54,11 +102,6 @@ namespace FirtsTask
 
             }
         }
-        public static void Main()
-        {
-            string input = Console.ReadLine();
-            IsPolyndrom(input, out string result);
-            Console.Write((result.Length > 1) ? result : -1);
-        }
+
     }
 }
